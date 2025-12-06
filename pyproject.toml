@@ -1,0 +1,30 @@
+[build-system]
+requires = ["uv_build>=0.9.0,<0.10.0"]
+build-backend = "uv_build"
+
+[project]
+name = "pydantic_agent"
+version = "0.0.1"
+description = "A template for developing production-ready Python applications."
+authors = [
+  { name = "Miguel Villa Floran", email = "miguel.villafloran@gmail.com" },
+]
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+license = { file = "LICENSE" }
+
+dependencies = [
+    "dspy>=3.0.4",
+    "dotenv>=0.9.9",
+    "typer>=0.20.0",
+    "pydantic-ai-slim[google]>=1.27.0",
+]
+
+[tool.uv.sources]
+pydantic_agent = { workspace = true }
+
+[dependency-groups]
+dev = ["pre-commit>=4.1.0", "ipykernel>=6.29.5"]
+
+[project.scripts]
+pydantic_agent = "pydantic_agent.cli:entrypoint"
